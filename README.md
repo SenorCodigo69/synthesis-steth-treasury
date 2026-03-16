@@ -127,6 +127,11 @@ python interact.py exit             # Owner withdraws everything
 
 See [`agent.json`](agent.json) for the machine-readable capability declaration following the EF Synthesis schema.
 
+## Related Projects
+
+- **[synthesis-yield-agent](https://github.com/SenorCodigo69/synthesis-yield-agent)** — Autonomous DeFi yield agent (Track 1: "Agents that pay" + Uniswap bounty) — manages USDC across Aave, Morpho, Compound on Base
+- **[synthesis-zk-agent](https://github.com/SenorCodigo69/synthesis-zk-agent)** — ZK privacy layer (Track 2: "Agents that keep secrets") — Circom proofs + Uniswap V4 ZK-gated hook
+
 ## Security
 
 - **No upgradability** — immutable contract, no proxy patterns
