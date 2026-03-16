@@ -38,7 +38,7 @@
   "contracts": {
     "AgentTreasury": {
       "network": "ethereum",
-      "address": null,
+      "address": "0x049B09c4aE1974F84164b65a9f0AB412dA9814f2",
       "source": "src/AgentTreasury.sol",
       "dependencies": {
         "stETH": "Lido staked ETH (rebasing)",

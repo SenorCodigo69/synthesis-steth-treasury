@@ -54,7 +54,11 @@ Owner deposits ETH
 
 | Network | Contract | Address |
 |---|---|---|
-| Ethereum Mainnet | AgentTreasury | *deploying...* |
+| Ethereum Mainnet | AgentTreasury | [`0x049B09c4aE1974F84164b65a9f0AB412dA9814f2`](https://etherscan.io/address/0x049B09c4aE1974F84164b65a9f0AB412dA9814f2) |
+
+**On-chain state:** 0.0065 stETH principal deposited, earning ~3.5% APR via Lido staking.
+
+**Wallet:** [`0x8d691720bF8C81044DB1a77b82D0eF5f5bffdE6C`](https://etherscan.io/address/0x8d691720bF8C81044DB1a77b82D0eF5f5bffdE6C)
 
 ## Quick Start
 
