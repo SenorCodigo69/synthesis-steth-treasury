@@ -1,0 +1,61 @@
+{
+  "name": "stETH Agent Treasury",
+  "version": "1.0.0",
+  "description": "Autonomous AI agent with a yield-bearing operating budget backed by Lido staked ETH. The agent can only spend accrued staking yield — principal is structurally inaccessible at the contract level.",
+  "author": "SenorCodigo69",
+  "repository": "https://github.com/SenorCodigo69/synthesis-steth-treasury",
+  "capabilities": {
+    "yield_monitoring": {
+      "description": "Monitors stETH staking yield accrual via wstETH exchange rate",
+      "inputs": ["wstETH_balance", "stETH_exchange_rate"],
+      "outputs": ["available_yield_stETH", "current_value_stETH", "principal_stETH"]
+    },
+    "yield_withdrawal": {
+      "description": "Withdraws accrued staking yield to whitelisted recipients",
+      "inputs": ["recipient_address", "stETH_amount"],
+      "outputs": ["transaction_hash", "stETH_transferred"],
+      "constraints": [
+        "Can only withdraw yield — principal is inaccessible",
+        "Recipient must be whitelisted by owner",
+        "Amount must not exceed per-transaction cap",
+        "Must wait for cooldown period between withdrawals"
+      ]
+    },
+    "treasury_reporting": {
+      "description": "Reports treasury status including principal, current value, available yield, and spending history",
+      "inputs": [],
+      "outputs": ["principal_stETH", "current_value_stETH", "available_yield", "total_yield_withdrawn", "wstETH_balance"]
+    }
+  },
+  "safety_rails": {
+    "principal_protection": "Agent cannot access deposited principal — enforced by on-chain invariant assert(currentValueStETH() >= principalStETH)",
+    "recipient_whitelist": "Agent can only send funds to owner-approved addresses",
+    "per_tx_cap": "Maximum stETH withdrawable per transaction (configurable by owner)",
+    "cooldown": "Minimum time between agent withdrawals (configurable by owner)",
+    "owner_override": "Owner can withdraw all funds (principal + yield) at any time",
+    "fail_safe": "If yield is 0, agent simply cannot withdraw — no fallback paths"
+  },
+  "contracts": {
+    "AgentTreasury": {
+      "network": "ethereum",
+      "address": null,
+      "source": "src/AgentTreasury.sol",
+      "dependencies": {
+        "stETH": "Lido staked ETH (rebasing)",
+        "wstETH": "Wrapped stETH (non-rebasing, used internally for accounting)"
+      }
+    }
+  },
+  "decision_loop": {
+    "observe": "Read currentValueStETH() and availableYield() from contract",
+    "analyze": "Compare yield against spending needs, check cooldown and cap constraints",
+    "decide": "Determine if withdrawal is needed and optimal amount",
+    "execute": "Call agentWithdraw(recipient, amount) on-chain",
+    "verify": "Confirm transaction success, verify principal invariant holds"
+  },
+  "hackathon": {
+    "event": "EF Synthesis 2026",
+    "tracks": ["Agents that pay", "Lido: stETH Agent Treasury"],
+    "wallet": "0x8d691720bF8C81044DB1a77b82D0eF5f5bffdE6C"
+  }
+}
