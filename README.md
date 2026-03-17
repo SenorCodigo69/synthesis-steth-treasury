@@ -129,7 +129,7 @@ See [`agent.json`](agent.json) for the machine-readable capability declaration f
 
 ## Related Projects
 
-- **[synthesis-yield-agent](https://github.com/SenorCodigo69/synthesis-yield-agent)** — Autonomous DeFi yield agent (Track 1: "Agents that pay" + Uniswap bounty) — manages USDC across Aave, Morpho, Compound on Base
+- **[synthesis-yield-agent](https://github.com/SenorCodigo69/synthesis-yield-agent)** — Autonomous DeFi yield agent (Track 1: "Agents that pay" + Uniswap bounty) — manages USDC across Aave, Morpho, Compound + AI-driven concentrated LP with quant signals on Base
 - **[synthesis-zk-agent](https://github.com/SenorCodigo69/synthesis-zk-agent)** — ZK privacy layer (Track 2: "Agents that keep secrets") — Circom proofs + Uniswap V4 ZK-gated hook
 
 ## Security
